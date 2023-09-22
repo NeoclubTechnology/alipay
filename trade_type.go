@@ -360,11 +360,12 @@ type TradeOrderSettleRsp struct {
 // TradeCreate 统一收单交易创建接口请求参数 https://docs.open.alipay.com/api_1/alipay.trade.create/
 type TradeCreate struct {
 	Trade
-	DiscountableAmount string             `json:"discountable_amount"` // 可打折金额. 参与优惠计算的金额，单位为元，精确到小数点后两位
-	BuyerId            string             `json:"buyer_id"`
+	DiscountableAmount string             `json:"discountable_amount,omitempty"` // 可打折金额. 参与优惠计算的金额，单位为元，精确到小数点后两位
+	BuyerId            string             `json:"buyer_id,omitempty"`
+	BuyerOpenId        string             `json:"buyer_open_id,omitempty"`
 	GoodsDetail        []*GoodsDetailItem `json:"goods_detail,omitempty"`
-	OperatorId         string             `json:"operator_id"`
-	TerminalId         string             `json:"terminal_id"`
+	OperatorId         string             `json:"operator_id,omitempty"`
+	TerminalId         string             `json:"terminal_id,omitempty"`
 }
 
 func (this TradeCreate) APIName() string {
